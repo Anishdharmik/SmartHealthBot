@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthChat Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <nav>
+        <h1>HealthChat</h1>
+        <button id="logoutBtn">Logout</button>
+    </nav>
+
+    <div class="container">
+        <h2>Welcome, <span id="username">User</span>!</h2>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <h3>AI Chatbot</h3>
+                <p>Ask health-related questions and get AI-powered responses.</p>
+                <button onclick="openChat()">Start Chat</button>
+            </div>
+
+            <div class="card">
+                <h3>Chat History</h3>
+                <p>Review your recent health chats with the bot.</p>
+                <button onclick="showChatHistory()">📜 View Chat History</button>
+            </div>
+
+            <div class="card">
+                <h3>Emergency Contacts</h3>
+                <p>Enter your emergency phone number:</p>
+                <input type="tel" id="emergencyNumber" placeholder="e.g., +91XXXXXXXXXX" />
+                <button onclick="saveEmergencyContact()">Save Number</button>
+                <button onclick="triggerEmergency()">🚨 Send Emergency Alert</button>
+                <p id="emergencyStatus" style="font-size: 14px; margin-top: 5px;"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot UI -->
+    <div id="chatbot-container" class="hidden">
+        <div id="chat-header">
+            <h3>Health Assistant</h3>
+            <button onclick="closeChat()">✖</button>
+        </div>
+        <div id="chat-box"></div>
+        <div style="display: flex; align-items: center; gap: 5px;">
+            <select id="langSelect">
+                <option value="en-IN">English</option>
+                <option value="ta-IN">Tamil</option>
+                <option value="hi-IN">Hindi</option>
+            </select>
+            <input type="text" id="chat-input" placeholder="Ask about a disease..." style="flex: 1;">
+            <button onclick="startListening()">🎙️</button>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <div id="chat-history-modal" class="hidden" style="position: fixed; top: 10%; left: 10%; width: 80%; height: 70%; background: #fff; border: 2px solid #333; padding: 15px; overflow-y: scroll; z-index: 1000;">
+        <h3>Chat History <button onclick="closeChatHistory()" style="float:right;">✖</button></h3>
+        <div id="chat-history-content"></div>
+    </div>
+
+    <script src="symptom_list.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>
